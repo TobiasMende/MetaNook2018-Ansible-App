@@ -16,7 +16,7 @@ const con = mysql.createConnection({
   });
 
 const server = http.createServer((req, res) => {
-    con.query("INSERT INTO demo DEFAULT VALUES;", function (err, result) {
+    con.query("INSERT INTO demo () VALUES ();", function (err, result) {
         res.setHeader('Content-Type', 'text/plain');
         if(err) {
             res.statusCode = 500;
