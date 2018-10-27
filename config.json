@@ -1,4 +1,11 @@
 {
     "hostname": "127.0.0.1",
-    "port": 8080
+    "port": 8080,
+    "db": {
+        "hostname": "localhost",
+        "port": 3306,
+        "user": "user",
+        "password": "password",
+        "database": "mydb"
+    }
 }

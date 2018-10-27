@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "This repository contains a small NodeJS application for demonstration purposes in the Ansible session.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasMende/MetaNook2018-Ansible-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TobiasMende/MetaNook2018-Ansible-App/issues"
+  },
+  "homepage": "https://github.com/TobiasMende/MetaNook2018-Ansible-App#readme",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
