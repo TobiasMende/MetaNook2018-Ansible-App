@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
     <td class="tg-0lax">${config.hostname}</td>
   </tr>
   <tr>
-    <td class="tg-0lax"><strong>Database ID:</strong></td>
+    <td class="tg-0lax"><strong>ID:</strong></td>
     <td class="tg-0lax">${id}</td>
   </tr>
 </table></div>`);
