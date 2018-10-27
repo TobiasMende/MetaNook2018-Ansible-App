@@ -26,7 +26,6 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         console.log("Result: " + result);
         const id = result.insertId
-        res.setHeader('Content-Type', 'text/plain');
         res.end(`Hello World from ${config.hostname} (${id})\n`);
     });
 });
