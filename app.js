@@ -17,7 +17,7 @@ const con = mysql.createConnection({
 
 const server = http.createServer((req, res) => {
     con.query("INSERT INTO demo () VALUES ();", function (err, result) {
-        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Type', 'text/html');
         if(err) {
             res.statusCode = 500;
             res.end(`Error with database connection on ${config.hostname}: ${err}`);
@@ -26,7 +26,9 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         console.log("Result: " + result);
         const id = result.insertId
-        res.end(`Hello World from ${config.hostname} (${id})\n`);
+        res.end(`<h1>Hello MetaNook 2018!</h1> 
+                    <ul><li><strong>Responding Host:</strong> ${config.hostname}</li>
+                    <li>Created Database ID:</strong> ${id}</li></ul>`);
     });
 });
 
