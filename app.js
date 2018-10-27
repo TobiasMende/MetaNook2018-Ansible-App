@@ -1,11 +1,34 @@
 #!/usr/bin/env nodejs
 const http = require('http');
-const config = require('./config')
+const config = require('./config');
+const mysql = require('mysql');
+
+const con = mysql.createConnection({
+    host: config.db.hostname,
+    user: config.db.user,
+    password: config.db.password,
+    database: config.db.database
+  });
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end(`Hello World from ${config.hostname}\n`);
+    con.query("INSERT INTO demo DEFAULT VALUES;", function (err, result) {
+        res.setHeader('Content-Type', 'text/plain');
+        if(err) {
+            res.statusCode = 500;
+            res.end(`Error with database connection on ${config.hostname}: ${err}`);
+            throw err;
+        }
+        res.statusCode = 200;
+        console.log("Result: " + result);
+        const id = result.insertId
+        res.setHeader('Content-Type', 'text/plain');
+        res.end(`Hello World from ${config.hostname} (${id})\n`);
+    });
 });
 
 server.listen(config.port, () => {
