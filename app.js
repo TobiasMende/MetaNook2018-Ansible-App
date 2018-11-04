@@ -4,29 +4,29 @@ const config = require('./config');
 const mysql = require('mysql');
 
 const con = mysql.createConnection({
-    host: config.db.hostname,
-    user: config.db.user,
-    password: config.db.password,
-    database: config.db.database
-  });
-  
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
+  host: config.db.hostname,
+  user: config.db.user,
+  password: config.db.password,
+  database: config.db.database
+});
+
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 const server = http.createServer((req, res) => {
-    con.query("INSERT INTO demo () VALUES ();", function (err, result) {
-        res.setHeader('Content-Type', 'text/html');
-        if(err) {
-            res.statusCode = 500;
-            res.end(`Error with database connection on ${config.hostname}: ${err}`);
-            throw err;
-        }
-        res.statusCode = 200;
-        console.log("Result: " + result);
-        res.end(body(result.insertId, config.hostname));
-    });
+  con.query("INSERT INTO demo () VALUES ();", function (err, result) {
+    res.setHeader('Content-Type', 'text/html');
+    if (err) {
+      res.statusCode = 500;
+      res.end(`Error with database connection on ${config.hostname}: ${err}`);
+      throw err;
+    }
+    res.statusCode = 200;
+    console.log("Result: " + result);
+    res.end(body(result.insertId, config.hostname));
+  });
 });
 
 server.listen(config.port, () => {
